@@ -26,6 +26,7 @@ Or
 
 ### Inspired by
 
+* https://github.com/TrafeX/docker-wordpress
 * https://hub.docker.com/_/wordpress/
 * https://codeable.io/wordpress-developers-intro-to-docker-part-two/
 * https://github.com/TrafeX/docker-php-nginx/
