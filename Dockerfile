@@ -46,13 +46,13 @@ COPY wp-secrets.php /usr/src/wordpress
 RUN chown nobody.nobody /usr/src/wordpress/wp-secrets.php && chmod 640 /usr/src/wordpress/wp-secrets.php
 
 # Add custom themes, plugins and/or uploads
-ADD wp-content /var/www/wp-content
+# ADD wp-content /var/www/wp-content
 
-RUN chown -R nobody.nobody /var/www/wp-content 2> /dev/null
-RUN chown -R nobody.nobody /var/www/wp-content/uploads 2> /dev/null
-RUN chmod 755 /var/www/wp-content/uploads 2> /dev/null
-RUN chmod 777 /var/www/wp-content/cache 2> /dev/null
-RUN chmod 777 /var/www/wp-content/w3tc-config 2> /dev/null
+# RUN chown -R nobody.nobody /var/www/wp-content 2> /dev/null
+# RUN chown -R nobody.nobody /var/www/wp-content/uploads 2> /dev/null
+# RUN chmod 755 /var/www/wp-content/uploads 2> /dev/null
+# RUN chmod 777 /var/www/wp-content/cache 2> /dev/null
+# RUN chmod 777 /var/www/wp-content/w3tc-config 2> /dev/null
 
 # Entrypoint to copy wp-content
 COPY entrypoint.sh /entrypoint.sh
