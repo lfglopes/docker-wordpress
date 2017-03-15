@@ -1,21 +1,24 @@
-FROM alpine:latest
-MAINTAINER Sergio Behrends <sergio@aerolab.co>
+FROM alpine:3.5
+LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
+      Description="Lightweight WordPress container with Nginx 1.10 & PHP-FPM 7.1 based on Alpine Linux."
 
-# Install packages
-RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-curl \
-    php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader php7-ctype \
-    php7-mbstring php7-gd nginx supervisor curl bash \
-    php7-mcrypt php7-opcache php7-apcu php7-bcmath php7-redis \
+# Install packages from testing repo's
+RUN apk --no-cache add php7.1 php7.1-fpm php7.1-mysqli php7.1-json php7.1-openssl php7.1-curl \
+    php7.1-zlib php7.1-xml php7.1-phar php7.1-intl php7.1-dom php7.1-xmlreader php7.1-ctype \
+    php7.1-mbstring php7.1-gd nginx \
+    php7.1-mcrypt php7.1-opcache php7.1-apcu php7.1-bcmath \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/ \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
-    --repository http://dl-4.alpinelinux.org/alpine/edge/testing
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+
+# Install packages from stable repo's
+RUN apk --no-cache add supervisor curl bash
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY config/fpm-pool.conf /etc/php7/php-fpm.d/zzz_custom.conf
-COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
+COPY config/fpm-pool.conf /etc/php7.1/php-fpm.d/zzz_custom.conf
+COPY config/php.ini /etc/php7.1/conf.d/zzz_custom.ini
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -25,8 +28,8 @@ WORKDIR /var/www/wp-content
 RUN chown -R nobody.nobody /var/www
 
 # Wordpress
-ENV WORDPRESS_VERSION 4.7
-ENV WORDPRESS_SHA1 1e14144c4db71421dc4ed22f94c3914dfc3b7020
+ENV WORDPRESS_VERSION 4.7.3
+ENV WORDPRESS_SHA1 35adcd8162eae00d5bc37f35344fdc06b22ffc98
 
 RUN mkdir -p /usr/src
 
