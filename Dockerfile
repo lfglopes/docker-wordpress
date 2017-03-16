@@ -2,6 +2,10 @@ FROM alpine:3.5
 LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
       Description="Lightweight WordPress container with Nginx 1.10 & PHP-FPM 7.1 based on Alpine Linux."
 
+# the present version of zlib is not compatible with libpng, and therefore php-gd
+# upgrade all the things!
+RUN apk -U upgrade
+
 # Install packages from testing repo's
 RUN apk --no-cache add php7.1 php7.1-fpm php7.1-mysqli php7.1-json php7.1-openssl php7.1-curl \
     php7.1-zlib php7.1-xml php7.1-phar php7.1-intl php7.1-dom php7.1-xmlreader php7.1-ctype \
