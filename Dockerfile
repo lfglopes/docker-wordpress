@@ -8,8 +8,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk -U upgrade && \
     apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-curl \
-    php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader php7-ctype \
-    php7-mbstring php7-gd nginx \
+    php7-zlib php7-xml php7-xmlwriter php7-xmlreader php7-phar php7-intl php7-dom \ php7-ctype php7-mbstring php7-gd nginx \
     php7-mcrypt php7-opcache php7-apcu php7-bcmath \
     supervisor curl bash
 
