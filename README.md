@@ -2,7 +2,7 @@
 
 Lightweight WordPress container with Nginx 1.10 & PHP-FPM 7.1 based on Alpine Linux.
 
-_WordPress version currently installed:_ **4.7.3**
+_WordPress version currently installed:_ **4.8**
 
 * Used in production for my own sites, making it stable, tested and up-to-date
 * Optimized for 100 concurrent users
@@ -28,6 +28,7 @@ Or
 
 ### Inspired by
 
+* https://github.com/sbehrends/docker-wordpress
 * https://github.com/TrafeX/docker-wordpress
 * https://hub.docker.com/_/wordpress/
 * https://codeable.io/wordpress-developers-intro-to-docker-part-two/
