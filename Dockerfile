@@ -1,13 +1,13 @@
-FROM alpine:latest
+FROM alpine:3.6
 LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
       Description="Lightweight WordPress container with Nginx 1.10 & PHP-FPM 7 based on Alpine Linux."
 
 # Install packages from testing repo's
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk -U upgrade && \
-    apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-curl \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.6/main" >> /etc/apk/repositories && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repositories && \
+    apk -U upgrade
+
+RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-curl \
     php7-zlib php7-xml php7-xmlwriter php7-xmlreader php7-phar php7-intl php7-dom \ 
     php7-simplexml php7-ctype php7-mbstring php7-gd php7-session nginx \
     php7-mcrypt php7-opcache php7-apcu php7-bcmath \
